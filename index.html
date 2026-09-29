@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f3ed" />
+    <title>Daymark — Task list</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="app-shell">
+        <header class="topbar">
+            <a class="wordmark" href="#" aria-label="Daymark home">daymark<span>.</span></a>
+            <span class="date-label" id="today-label"></span>
+        </header>
+
+        <section class="workspace" aria-labelledby="page-title">
+            <div class="intro">
+                <p class="eyebrow">YOUR SPACE, YOUR PACE</p>
+                <h1 id="page-title">Make room<br />for <em>what matters.</em></h1>
+                <p class="subheading">A little clarity for everything on your mind.</p>
+            </div>
+
+            <section class="task-panel" aria-label="Your tasks">
+                <form class="task-form" id="task-form">
+                    <label class="visually-hidden" for="task-input">Add a task</label>
+                    <input id="task-input" name="task" type="text" placeholder="What needs your attention?"
+                        maxlength="120" autocomplete="off" required />
+                    <button class="add-button" type="submit" aria-label="Add task" title="Add task">+</button>
+                </form>
+
+                <div class="list-toolbar">
+                    <p class="task-count" id="task-count" aria-live="polite">0 tasks</p>
+                    <div class="filters" role="group" aria-label="Filter tasks">
+                        <button class="filter-button is-active" type="button" data-filter="all"
+                            aria-pressed="true">All</button>
+                        <button class="filter-button" type="button" data-filter="open"
+                            aria-pressed="false">Open</button>
+                        <button class="filter-button" type="button" data-filter="done"
+                            aria-pressed="false">Done</button>
+                    </div>
+                </div>
+
+                <ul class="task-list" id="task-list" aria-live="polite"></ul>
+                <div class="empty-state" id="empty-state">
+                    <span class="empty-mark" aria-hidden="true">✳</span>
+                    <p id="empty-message">A fresh page. Add your first task above.</p>
+                </div>
+                <footer class="panel-footer">
+                    <span>One thing at a time.</span>
+                    <button class="clear-button" id="clear-completed" type="button">Clear completed</button>
+                </footer>
+            </section>
+        </section>
+
+        <div class="corner-note" aria-hidden="true">A DAILY PRACTICE IN FOCUS</div>
+    </main>
+</body>
+
+</html>

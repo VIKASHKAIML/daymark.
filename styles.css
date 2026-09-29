@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+:root {
+    color-scheme: light;
+    --paper: #f4f3ed;
+    --ink: #20231f;
+    --muted: #77796f;
+    --line: #e4e2d9;
+    --accent: #d85a3b;
+    --green: #7d8e6a;
+    --panel: #fffefa;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--paper);
+    background-image: radial-gradient(#d7d5ca 0.65px, transparent 0.65px);
+    background-size: 13px 13px;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    color: inherit;
+}
+
+.app-shell {
+    width: min(100% - 64px, 1120px);
+    min-height: 100vh;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    height: 86px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(32 35 31 / 14%);
+    animation: arrive 500ms ease-out both;
+}
+
+.wordmark {
+    color: var(--ink);
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+.wordmark span {
+    color: var(--accent);
+}
+
+.date-label,
+.eyebrow,
+.corner-note {
+    font-family: 'DM Mono', monospace;
+}
+
+.date-label {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.workspace {
+    width: min(100%, 720px);
+    margin: clamp(52px, 9vh, 100px) auto 64px;
+}
+
+.intro {
+    margin-bottom: 42px;
+    animation: arrive 600ms 80ms ease-out both;
+}
+
+.eyebrow {
+    margin: 0 0 18px;
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 1.2px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(43px, 6vw, 66px);
+    line-height: 1.02;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+h1 em {
+    color: var(--green);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 500;
+}
+
+.subheading {
+    margin: 18px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.task-panel {
+    padding: 22px 26px 0;
+    background: var(--panel);
+    border: 1px solid #e6e3d9;
+    box-shadow: 0 12px 32px rgb(38 38 31 / 5%);
+    animation: arrive 650ms 160ms ease-out both;
+}
+
+.task-form {
+    display: flex;
+    min-height: 54px;
+    border-bottom: 1px solid var(--line);
+}
+
+.task-form input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--ink);
+    font-size: 14px;
+}
+
+.task-form input::placeholder {
+    color: #9a9b92;
+}
+
+.task-form:focus-within {
+    border-color: var(--green);
+}
+
+.add-button {
+    width: 34px;
+    height: 34px;
+    align-self: center;
+    border: 0;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 1;
+    transition: transform 150ms ease, background 150ms ease;
+}
+
+.add-button:hover {
+    transform: rotate(90deg);
+    background: #bd482d;
+}
+
+.list-toolbar {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.task-count {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.filters {
+    display: flex;
+    gap: 4px;
+}
+
+.filter-button {
+    padding: 7px 10px;
+    border: 0;
+    border-radius: 2px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.filter-button:hover {
+    color: var(--ink);
+}
+
+.filter-button.is-active {
+    background: #eeeee7;
+    color: var(--ink);
+}
+
+.task-list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.task-item {
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--line);
+    animation: arrive 220ms ease-out both;
+}
+
+.task-toggle {
+    width: 19px;
+    height: 19px;
+    flex: 0 0 19px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid #c9c9bd;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.task-toggle:hover {
+    border-color: var(--green);
+}
+
+.task-item.is-done .task-toggle {
+    border-color: var(--green);
+    background: var(--green);
+    color: white;
+}
+
+.task-text {
+    flex: 1;
+    overflow-wrap: anywhere;
+    font-size: 14px;
+}
+
+.task-item.is-done .task-text {
+    color: #9a9b92;
+    text-decoration: line-through;
+}
+
+.delete-button {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background: transparent;
+    color: #a4a49a;
+    cursor: pointer;
+    font-size: 19px;
+    opacity: 0;
+}
+
+.task-item:hover .delete-button,
+.delete-button:focus-visible {
+    opacity: 1;
+}
+
+.delete-button:hover {
+    color: var(--accent);
+}
+
+.empty-state {
+    padding: 34px 12px 38px;
+    color: var(--muted);
+    text-align: center;
+}
+
+.empty-state p {
+    margin: 8px 0 0;
+    font-size: 13px;
+}
+
+.empty-mark {
+    color: var(--green);
+    font-size: 20px;
+}
+
+.panel-footer {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+}
+
+.clear-button {
+    padding: 8px 0 8px 8px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.clear-button:hover {
+    color: var(--accent);
+}
+
+.corner-note {
+    margin: auto 0 22px;
+    color: #929389;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@keyframes arrive {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .app-shell {
+        width: min(100% - 36px, 1120px);
+    }
+
+    .topbar {
+        height: 70px;
+    }
+
+    .workspace {
+        margin-top: 58px;
+    }
+
+    .intro {
+        margin-bottom: 32px;
+    }
+
+    .task-panel {
+        padding-inline: 17px;
+    }
+
+    .delete-button {
+        opacity: 1;
+    }
+
+    .corner-note {
+        margin-top: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
