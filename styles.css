@@ -322,6 +322,27 @@ h1 em {
     text-align: center;
 }
 
+.site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 18px;
+    padding: 18px 20px 32px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+.site-footer strong {
+    color: var(--ink);
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
